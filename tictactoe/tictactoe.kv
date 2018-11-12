@@ -1,0 +1,63 @@
+<GridEntry>:
+    font_size: self.height
+    background_normal: ''
+    background_color: 1, 1, 1, 1
+
+<TicTacToePlayerScreen>:
+    name: 'TicTacToePlayer'
+
+<TicTacToeAIScreen>:
+    name: 'TicTacToeAI'
+
+<TicTacToePlayerLayout>:
+    cols: 3
+    rows: 3
+    spacing: 10
+    padding: 10
+
+<CustButton@Button>:
+    font_size: 15
+    color: .85, .85, .85, 1
+    size: 50, 25
+    background_normal: ''
+    background_color: 0.2, 0.2, 0.2, 1
+    size_hint: .25, .15
+
+<introScreen>:
+    name: 'intro'
+    canvas.before:
+        Color:
+            rgba: .95, .95, .95, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    canvas.after:
+        Color:
+            rgba: 0.2, 0.2, 0.2, 1
+
+        Line:
+            points: (200, 300, 600, 300)
+            width: 1
+
+    Label:
+        text: "Welcome to the game of Tic-TacToe! \nPlease choose who would you like to play against."
+        color: 0, 0, 0, 1
+        font_size: 20
+        halign: 'center'
+        valign: 'middle'
+        pos_hint: {"center_x": 0.5, "center_y": 0.7}
+
+    CustButton:
+        text: "Play Against Player"
+        pos_hint: {"x": 0.1, "y": 0.2}
+        on_press:
+            root.manager.transition.direction = 'left'
+            root.manager.current = 'TicTacToePlayer'
+
+    CustButton:
+        text: "Play Against AI"
+        pos_hint: {"right": 0.9, "y": 0.2}
+        on_press:
+            root.manager.transition.direction = 'right'
+            root.manager.current = 'TicTacToeAI'
